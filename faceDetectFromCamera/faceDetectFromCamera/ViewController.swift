@@ -12,10 +12,13 @@ import AVFoundation
 class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDelegate {
 
     @IBOutlet weak var sliderParsonNum: UISlider!
+    @IBOutlet weak var buttonTakePhoto: UIButton!
     private var _captureSession = AVCaptureSession()
     private var _videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
     private var _videoOutput = AVCaptureVideoDataOutput()
     private var _videoLayer : AVCaptureVideoPreviewLayer? = nil
+    
+    private var takePhoto:Bool = false
     // キャプチャーの出力データを受け付けるオブジェクト
     private var photoOutput : AVCapturePhotoOutput?
     
@@ -25,7 +28,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     private var photoTakeCount:Int = 0
     
     func setupVideo( camPos:AVCaptureDevice.Position, orientaiton:AVCaptureVideoOrientation ){
-            // カメラ関連の設定
+        // カメラ関連の設定
         self._captureSession = AVCaptureSession()
         self._videoOutput = AVCaptureVideoDataOutput()
         self._videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: camPos)
@@ -58,7 +61,10 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         self._videoLayer?.frame = UIScreen.main.bounds
         self._videoLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self._videoLayer?.connection?.videoOrientation = orientaiton
-        self.view.layer.addSublayer(self._videoLayer!)
+        
+        //プレビュー画面を下層のレイヤに表示、これでボタンとかが見える
+        self.view.layer.insertSublayer(self._videoLayer!, at: 0)
+        //self.view.layer.addSublayer(self._videoLayer!)//もとのやつ
             
         // 録画開始
         self._captureSession.startRunning()
@@ -135,7 +141,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                             //写真へ保存
                             let settings = AVCapturePhotoSettings()
                             // フラッシュの設定
-                            settings.flashMode = .auto
+                                settings.flashMode = .off
                             // カメラの手ぶれ補正
                             settings.isAutoStillImageStabilizationEnabled = true
                             // 撮影された画像をdelegateメソッドで処理
@@ -157,10 +163,27 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
             }
     }
     
+    // ボタンのスタイルを設定
+    func styleCaptureButton() {
+        buttonTakePhoto.layer.borderColor = UIColor.white.cgColor
+        buttonTakePhoto.layer.borderWidth = 5
+        buttonTakePhoto.clipsToBounds = true
+        buttonTakePhoto.layer.cornerRadius = min(buttonTakePhoto.frame.width, buttonTakePhoto.frame.height) / 2
+    }
+
     
+    
+    @IBAction func buttonTakePhotoPushed(_ sender: Any) {
+        if takePhoto == true{
+            takePhoto = false
+        }else{
+            takePhoto = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupVideo(camPos: .front, orientaiton: .portrait)
+        styleCaptureButton()
+        setupVideo(camPos: .back, orientaiton: .portrait)
         // Do any additional setup after loading the view.
     }
 }
