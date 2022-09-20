@@ -13,6 +13,9 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
 
     @IBOutlet weak var sliderParsonNum: UISlider!
     @IBOutlet weak var buttonTakePhoto: UIButton!
+    @IBOutlet weak var buttonChangeCamera: UIButton!
+    @IBOutlet weak var labelParsonNum: UILabel!
+    @IBOutlet weak var stepperParsonNum: UIStepper!
     private var _captureSession = AVCaptureSession()
     private var _videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
     private var _videoOutput = AVCaptureVideoDataOutput()
@@ -135,21 +138,23 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                         }
                     }
                     
-                    if parsonCount == Int(self.sliderParsonNum.value) {
-                    //if parsonCount == 1 {
+                    if self.takePhoto == true {
+                        if parsonCount == Int(self.stepperParsonNum.value) {
+                            //if parsonCount == 1 {
                             if self.photoTakeCount % 10 == 0{
-                            //写真へ保存
-                            let settings = AVCapturePhotoSettings()
-                            // フラッシュの設定
+                                //写真へ保存
+                                let settings = AVCapturePhotoSettings()
+                                // フラッシュの設定
                                 settings.flashMode = .off
-                            // カメラの手ぶれ補正
-                            settings.isAutoStillImageStabilizationEnabled = true
-                            // 撮影された画像をdelegateメソッドで処理
-                            self.photoOutput?.capturePhoto(with: settings, delegate: self as! AVCapturePhotoCaptureDelegate)
-                        }
-                        self.photoTakeCount += 1
-                        if self.photoTakeCount == 100{
-                            self.photoTakeCount = 0
+                                // カメラの手ぶれ補正
+                                settings.isAutoStillImageStabilizationEnabled = true
+                                // 撮影された画像をdelegateメソッドで処理
+                                self.photoOutput?.capturePhoto(with: settings, delegate: self as! AVCapturePhotoCaptureDelegate)
+                            }
+                            self.photoTakeCount += 1
+                            if self.photoTakeCount == 100{
+                                self.photoTakeCount = 0
+                            }
                         }
                     }
                     
@@ -172,16 +177,38 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     }
 
     
-    
+    //ボタンを押して、撮影モードを変更、ボタンのテキストを変更
     @IBAction func buttonTakePhotoPushed(_ sender: Any) {
         if takePhoto == true{
             takePhoto = false
+            buttonTakePhoto.setTitle("停止中", for: .normal)
         }else{
             takePhoto = true
+            buttonTakePhoto.setTitle("撮影中", for: .normal)
         }
     }
+    @IBAction func buttonCameraChangePushed(_ sender: Any) {
+        if self._videoDevice?.position == .back{
+            setupVideo(camPos: .front, orientaiton: .portrait)
+            // 録画開始
+            //self._captureSession.startRunning()
+
+        } else{
+            setupVideo(camPos: .back, orientaiton: .portrait)
+            // 録画開始
+            //self._captureSession.startRunning()
+        }
+        //self._videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: camPos)
+        
+    }
+    
+    @IBAction func stepperValueChanged(_ sender: Any) {
+        labelParsonNum.text = String(Int(stepperParsonNum.value))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        labelParsonNum.text = String(Int(stepperParsonNum.value))
         styleCaptureButton()
         setupVideo(camPos: .back, orientaiton: .portrait)
         // Do any additional setup after loading the view.

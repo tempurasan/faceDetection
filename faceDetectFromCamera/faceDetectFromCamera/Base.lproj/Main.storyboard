@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Khz-k9-Qmq">
-                                <rect key="frame" x="54" y="58" width="283" height="30"/>
+                                <rect key="frame" x="54" y="37" width="283" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQQ-vW-g9z">
-                                <rect key="frame" x="139" y="736" width="113" height="35"/>
+                                <rect key="frame" x="48" y="736" width="113" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="撮影開始"/>
@@ -30,13 +30,39 @@
                                     <action selector="buttonTakePhotoPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="avi-Dk-5r4"/>
                                 </connections>
                             </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="hrH-b0-njN">
+                                <rect key="frame" x="169" y="737" width="94" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dzJ-kU-oaG"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icD-gp-dyp">
+                                <rect key="frame" x="293" y="743" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-Fl-rTe">
+                                <rect key="frame" x="159" y="74" width="176" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="カメラ切り替え"/>
+                                <connections>
+                                    <action selector="buttonCameraChangePushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yNc-RJ-D9R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="buttonChangeCamera" destination="UYX-Fl-rTe" id="g7y-vi-S6i"/>
                         <outlet property="buttonTakePhoto" destination="iQQ-vW-g9z" id="QGu-Kt-Spw"/>
+                        <outlet property="labelParsonNum" destination="icD-gp-dyp" id="s4C-Dz-9cb"/>
                         <outlet property="sliderParsonNum" destination="Khz-k9-Qmq" id="BBB-ke-WZF"/>
+                        <outlet property="stepperParsonNum" destination="hrH-b0-njN" id="MyS-da-s8E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
