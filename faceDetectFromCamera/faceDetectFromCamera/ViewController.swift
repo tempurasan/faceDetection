@@ -65,7 +65,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         self._videoLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self._videoLayer?.connection?.videoOrientation = orientaiton
         
-        //プレビュー画面を下層のレイヤに表示、これでボタンとかが見える
+        //プレビュー画面を下層のレイヤに表示、多分これでボタンとかが見える
         self.view.layer.insertSublayer(self._videoLayer!, at: 0)
         //self.view.layer.addSublayer(self._videoLayer!)//もとのやつ
             
@@ -92,10 +92,18 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
             let yRate : CGFloat = self.view.bounds.height / self.image.size.height
             
             let faceRect = CGRect(
-                x: (1 - box.maxX) * self.image.size.width * xRate,
+                //フロントカメラ
+//                x: (1 - box.maxX) * self.image.size.width * xRate,
+//                y: (1 - box.maxY) * self.image.size.height * yRate,
+//                width: box.width * self.image.size.width * xRate,
+//                height: box.height * self.image.size.height * yRate
+                
+                //背面カメラ
+                x: box.minX * self.image.size.width * xRate,
                 y: (1 - box.maxY) * self.image.size.height * yRate,
                 width: box.width * self.image.size.width * xRate,
                 height: box.height * self.image.size.height * yRate
+
             )
             
             let faceTrackingView = UIView(frame: faceRect)
