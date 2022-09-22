@@ -16,6 +16,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     @IBOutlet weak var buttonTakePhoto: UIButton!
     @IBOutlet weak var buttonChangeCamera: UIButton!
     @IBOutlet weak var labelParsonNum: UILabel!
+    @IBOutlet weak var segmentedControlShutter: UISegmentedControl!
     @IBOutlet weak var stepperParsonNum: UIStepper!
     private var _captureSession = AVCaptureSession()
     private var _videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
@@ -28,6 +29,8 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     private var rectArray:[UIView] = []
     var image : UIImage!
+    
+    private var shutterSpeed :Int = 10
     
     private var photoTakeCount:Int = 0
     
@@ -163,7 +166,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                     if self.takePhoto == true {
                         if parsonCount == Int(self.stepperParsonNum.value) {
                             //if parsonCount == 1 {
-                            if self.photoTakeCount % 10 == 0{
+                            if self.photoTakeCount % self.shutterSpeed == 0{
                                 //写真へ保存
                                 let settings = AVCapturePhotoSettings()
                                 // フラッシュの設定
@@ -212,6 +215,9 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         }
     }
     
+    @IBAction func segmentedValueChanged(_ sender: Any) {
+        shutterSpeed = (segmentedControlShutter.selectedSegmentIndex + 1) * 10
+    }
     //フロントカメラ、背面カメラ変更
     @IBAction func buttonCameraChangePushed(_ sender: Any) {
         self._captureSession.stopRunning()

@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-Fl-rTe">
-                                <rect key="frame" x="48" y="74" width="176" height="35"/>
+                                <rect key="frame" x="190" y="37" width="176" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="カメラ切り替え"/>
@@ -62,6 +62,18 @@
                                     <action selector="buttonPushedShowCameraRoll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Hc-4g-fhg"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wgj-ZJ-Ny6">
+                                <rect key="frame" x="93" y="74" width="205" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Fast"/>
+                                    <segment title="Nomal"/>
+                                    <segment title="Slow"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZUM-qh-hks"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,6 +82,7 @@
                         <outlet property="buttonChangeCamera" destination="UYX-Fl-rTe" id="g7y-vi-S6i"/>
                         <outlet property="buttonTakePhoto" destination="iQQ-vW-g9z" id="QGu-Kt-Spw"/>
                         <outlet property="labelParsonNum" destination="icD-gp-dyp" id="s4C-Dz-9cb"/>
+                        <outlet property="segmentedControlShutter" destination="Wgj-ZJ-Ny6" id="uXP-gi-ndc"/>
                         <outlet property="sliderParsonNum" destination="Khz-k9-Qmq" id="BBB-ke-WZF"/>
                         <outlet property="stepperParsonNum" destination="hrH-b0-njN" id="MyS-da-s8E"/>
                     </connections>
