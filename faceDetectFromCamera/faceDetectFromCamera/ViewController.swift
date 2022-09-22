@@ -31,6 +31,8 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     private var photoTakeCount:Int = 0
     
     func setupVideo( camPos:AVCaptureDevice.Position, orientaiton:AVCaptureVideoOrientation ){
+        self._videoLayer = nil
+        
         // カメラ関連の設定
         self._captureSession = AVCaptureSession()
         self._videoOutput = AVCaptureVideoDataOutput()
@@ -187,6 +189,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     //ボタンを押して、撮影モードを変更、ボタンのテキストを変更
     @IBAction func buttonTakePhotoPushed(_ sender: Any) {
+        //self._captureSession.stopRunning()
         if takePhoto == true{
             takePhoto = false
             buttonTakePhoto.setTitle("停止中", for: .normal)
@@ -195,8 +198,12 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
             buttonTakePhoto.setTitle("撮影中", for: .normal)
         }
     }
+    
+    //フロントカメラ、背面カメラ変更
     @IBAction func buttonCameraChangePushed(_ sender: Any) {
+        self._captureSession.stopRunning()
         if self._videoDevice?.position == .back{
+            
             setupVideo(camPos: .front, orientaiton: .portrait)
             // 録画開始
             //self._captureSession.startRunning()
