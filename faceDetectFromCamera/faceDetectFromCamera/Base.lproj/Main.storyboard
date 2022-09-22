@@ -45,12 +45,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-Fl-rTe">
-                                <rect key="frame" x="159" y="74" width="176" height="35"/>
+                                <rect key="frame" x="48" y="74" width="176" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="カメラ切り替え"/>
                                 <connections>
                                     <action selector="buttonCameraChangePushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yNc-RJ-D9R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lug-wn-gpB">
+                                <rect key="frame" x="203" y="663" width="163" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="カメラロール表示"/>
+                                <connections>
+                                    <action selector="buttonPushedShowCameraRoll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Hc-4g-fhg"/>
                                 </connections>
                             </button>
                         </subviews>

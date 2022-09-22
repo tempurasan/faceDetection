@@ -8,6 +8,7 @@
 import UIKit
 import Vision
 import AVFoundation
+import PhotosUI
 
 class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDelegate {
 
@@ -29,6 +30,17 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     var image : UIImage!
     
     private var photoTakeCount:Int = 0
+    
+    //カメラロール表示用
+    private lazy var picker: PHPickerViewController = {
+            var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            configuration.filter = .images
+            configuration.selectionLimit = 1
+            let picker = PHPickerViewController(configuration: configuration)
+            //picker.delegate = self//なぜかこれを入れるとエラー
+            return picker
+        }()
+    
     
     func setupVideo( camPos:AVCaptureDevice.Position, orientaiton:AVCaptureVideoOrientation ){
         self._videoLayer = nil
@@ -189,7 +201,8 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     //ボタンを押して、撮影モードを変更、ボタンのテキストを変更
     @IBAction func buttonTakePhotoPushed(_ sender: Any) {
-        //self._captureSession.stopRunning()
+//        self._captureSession.stopRunning()
+//        self._captureSession.startRunning()
         if takePhoto == true{
             takePhoto = false
             buttonTakePhoto.setTitle("停止中", for: .normal)
@@ -217,6 +230,21 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         
     }
     
+    //カメラロール表示
+    @IBAction func buttonPushedShowCameraRoll(_ sender: Any) {
+        // カメラロール表示
+        // フォトライブラリを表示
+                present(picker, animated: true, completion: nil)
+//        let imagePickerController = UIImagePickerController()
+//        imagePickerController.sourceType = .photoLibrary
+//        //imagePickerController.delegate = self
+//        imagePickerController.mediaTypes = ["public.image"]
+//        present(imagePickerController,animated: true,completion: nil)
+    }
+    
+    
+    
+    
     @IBAction func stepperValueChanged(_ sender: Any) {
         labelParsonNum.text = String(Int(stepperParsonNum.value))
     }
@@ -228,6 +256,13 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         setupVideo(camPos: .back, orientaiton: .portrait)
         // Do any additional setup after loading the view.
     }
+    
+    // 画面を回転させるかどうか
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    
 }
 
 extension ViewController: AVCapturePhotoCaptureDelegate{
