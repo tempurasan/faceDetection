@@ -152,20 +152,17 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                         
                         //self.drawRect(box: observation.boundingBox, color: UIColor.red)
                         // 枠線を描画する
-                        if fabs(yaw!) > 0.5 {
-                            //顔の向きが横向き
+                        if fabs(yaw!) > 0.5 {//顔の向きが横向き
                             self.drawRect(box: observation.boundingBox, color: UIColor.red)
-                        } else {
-                            //顔が正面を向いている
+                        } else {//顔が正面を向いている
                             self.drawRect(box: observation.boundingBox, color: UIColor.magenta)
                             //正面を向いている人数をカウント
                             parsonCount += 1
                         }
                     }
                     
-                    if self.takePhoto == true {
-                        if parsonCount == Int(self.stepperParsonNum.value) {
-                            //if parsonCount == 1 {
+                    if self.takePhoto == true {//撮影ボタンが押されているか
+                        if parsonCount == Int(self.stepperParsonNum.value) {//画面と設定人数が一致
                             if self.photoTakeCount % self.shutterSpeed == 0{
                                 //写真へ保存
                                 let settings = AVCapturePhotoSettings()
@@ -177,8 +174,8 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                                 self.photoOutput?.capturePhoto(with: settings, delegate: self as! AVCapturePhotoCaptureDelegate)
                             }
                             self.photoTakeCount += 1
-                            if self.photoTakeCount == 100{
-                                self.photoTakeCount = 0
+                            if self.photoTakeCount == 120{
+                                self.photoTakeCount = 1
                             }
                         }
                     }
@@ -238,18 +235,9 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     //カメラロール表示
     @IBAction func buttonPushedShowCameraRoll(_ sender: Any) {
-        // カメラロール表示
         // フォトライブラリを表示
         present(picker, animated: true, completion: nil)
-//        let imagePickerController = UIImagePickerController()
-//        imagePickerController.sourceType = .photoLibrary
-//        //imagePickerController.delegate = self
-//        imagePickerController.mediaTypes = ["public.image"]
-//        present(imagePickerController,animated: true,completion: nil)
     }
-    
-    
-    
     
     @IBAction func stepperValueChanged(_ sender: Any) {
         labelParsonNum.text = String(Int(stepperParsonNum.value))
