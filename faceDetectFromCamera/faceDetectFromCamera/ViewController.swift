@@ -37,10 +37,10 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     //カメラロール表示用
     private lazy var picker: PHPickerViewController = {
             var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-            configuration.filter = .images
-            configuration.selectionLimit = 1
+            configuration.filter = .images //画像だけ選択可能
+            configuration.selectionLimit = 1 //選択上限をなくす場合は０
             let picker = PHPickerViewController(configuration: configuration)
-            //picker.delegate = self//なぜかこれを入れるとエラー
+            picker.delegate = self//deligateを指定
             return picker
         }()
     
@@ -240,7 +240,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     @IBAction func buttonPushedShowCameraRoll(_ sender: Any) {
         // カメラロール表示
         // フォトライブラリを表示
-                present(picker, animated: true, completion: nil)
+        present(picker, animated: true, completion: nil)
 //        let imagePickerController = UIImagePickerController()
 //        imagePickerController.sourceType = .photoLibrary
 //        //imagePickerController.delegate = self
@@ -282,5 +282,13 @@ extension ViewController: AVCapturePhotoCaptureDelegate{
        }
    }
 }
+
+extension ViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true) // 追加: Cancel または Add ボタン押下で Picker が閉じられるようになる。
+        
+    }
+}
+
 
 
