@@ -66,7 +66,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lug-wn-gpB">
-                                <rect key="frame" x="0.0" y="680" width="163" height="35"/>
+                                <rect key="frame" x="0.0" y="735" width="163" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="カメラロール表示"/>
@@ -80,6 +80,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonChangeCamera" destination="UYX-Fl-rTe" id="g7y-vi-S6i"/>
+                        <outlet property="buttonShowCameraRoll" destination="lug-wn-gpB" id="caP-PV-5NL"/>
                         <outlet property="buttonTakePhoto" destination="iQQ-vW-g9z" id="QGu-Kt-Spw"/>
                         <outlet property="labelParsonNum" destination="icD-gp-dyp" id="s4C-Dz-9cb"/>
                         <outlet property="segmentedControlShutter" destination="Wgj-ZJ-Ny6" id="uXP-gi-ndc"/>

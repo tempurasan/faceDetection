@@ -15,6 +15,8 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     @IBOutlet weak var sliderParsonNum: UISlider!
     @IBOutlet weak var buttonTakePhoto: UIButton!
     @IBOutlet weak var buttonChangeCamera: UIButton!
+    @IBOutlet weak var buttonShowCameraRoll: UIButton!
+    
     @IBOutlet weak var labelParsonNum: UILabel!
     @IBOutlet weak var segmentedControlShutter: UISegmentedControl!
     @IBOutlet weak var stepperParsonNum: UIStepper!
@@ -45,7 +47,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
             configuration.filter = .images //画像だけ選択可能
             configuration.selectionLimit = 1 //選択上限をなくす場合は０
             let picker = PHPickerViewController(configuration: configuration)
-            picker.delegate = self//deligateを指定
+            picker.delegate = self//delegateを指定
             return picker
         }()
     
@@ -218,6 +220,13 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         buttonTakePhoto.layer.cornerRadius = 50//width / 2, height / 2
     }
 
+    func styleCameraRollButton(){
+        buttonShowCameraRoll.setTitle("", for: .normal)
+        //let picture = UIImage(systemName: "photo.stack.fill")
+        let picture = UIImage(named: "test.png")
+        buttonShowCameraRoll.setImage(picture, for: .normal)
+    }
+    
     
     //ボタンを押して、撮影モードを変更、ボタンのテキストを変更
     @IBAction func buttonTakePhotoPushed(_ sender: Any) {
@@ -291,6 +300,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         super.viewDidLoad()
         labelParsonNum.text = String(Int(stepperParsonNum.value))
         styleCaptureButton()
+        styleCameraRollButton()
         setupVideo(camPos: .back, orientaiton: .portrait)
         // Do any additional setup after loading the view.
     }
