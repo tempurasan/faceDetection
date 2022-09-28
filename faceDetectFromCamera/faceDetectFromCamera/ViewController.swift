@@ -213,7 +213,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         //文字を消す
         buttonTakePhoto.setTitle("", for: .normal)
         //大きさ変更
-        buttonTakePhoto.frame = CGRect(x: buttonTakePhoto.frame.minX, y: buttonTakePhoto.frame.minY, width: 100, height: 100)
+        buttonTakePhoto.frame = CircleFromRect(x: buttonX, y: buttonY, radius: 50)
         //角を丸くする
         buttonTakePhoto.layer.cornerRadius = 50//width / 2, height / 2
     }
@@ -223,6 +223,8 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     @IBAction func buttonTakePhotoPushed(_ sender: Any) {
 //        self._captureSession.stopRunning()
 //        self._captureSession.startRunning()
+        
+        //変更するか？　falseのとき押されていることになってる
         if takePhoto == true{
             //buttonTakePhoto.setTitle("停止中", for: .normal)
             self.buttonTakePhoto.layer.removeAllAnimations()
@@ -231,7 +233,6 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                 self.buttonTakePhoto.layer.cornerRadius = 50
                 self.buttonTakePhoto.alpha = 1.0
             })
-
         }else{
             //buttonTakePhoto.setTitle("撮影中", for: .normal)
             UIView.animate(withDuration: 0.3, animations: {
