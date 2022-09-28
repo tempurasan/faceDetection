@@ -34,6 +34,11 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     private var photoTakeCount:Int = 0
     
+    //撮影ボタンの中心座標
+    private var buttonX: Int = 0;
+    private var buttonY: Int = 0;
+
+    
     //カメラロール表示用
     private lazy var picker: PHPickerViewController = {
             var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
@@ -192,10 +197,25 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     // ボタンのスタイルを設定
     func styleCaptureButton() {
-        buttonTakePhoto.layer.borderColor = UIColor.white.cgColor
-        buttonTakePhoto.layer.borderWidth = 5
-        buttonTakePhoto.clipsToBounds = true
-        buttonTakePhoto.layer.cornerRadius = min(buttonTakePhoto.frame.width, buttonTakePhoto.frame.height) / 2
+//        buttonTakePhoto.layer.borderColor = UIColor.white.cgColor
+//        buttonTakePhoto.layer.borderWidth = 5
+//        buttonTakePhoto.clipsToBounds = true
+//        buttonTakePhoto.layer.cornerRadius = min(buttonTakePhoto.frame.width, buttonTakePhoto.frame.height) / 2
+        
+        buttonX = Int(buttonTakePhoto.frame.minX + buttonTakePhoto.frame.width / 2)
+        buttonY = Int(buttonTakePhoto.frame.minY + buttonTakePhoto.frame.height / 2)
+        //背景色
+        buttonTakePhoto.backgroundColor = UIColor.red
+        //枠線を追加
+        buttonTakePhoto.layer.borderColor = UIColor.black.cgColor
+        //枠線の太さ
+        buttonTakePhoto.layer.borderWidth = 5.0
+        //文字を消す
+        buttonTakePhoto.setTitle("", for: .normal)
+        //大きさ変更
+        buttonTakePhoto.frame = CGRect(x: buttonTakePhoto.frame.minX, y: buttonTakePhoto.frame.minY, width: 100, height: 100)
+        //角を丸くする
+        buttonTakePhoto.layer.cornerRadius = 50//width / 2, height / 2
     }
 
     
@@ -204,13 +224,36 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
 //        self._captureSession.stopRunning()
 //        self._captureSession.startRunning()
         if takePhoto == true{
-            takePhoto = false
-            buttonTakePhoto.setTitle("停止中", for: .normal)
+            //buttonTakePhoto.setTitle("停止中", for: .normal)
+            self.buttonTakePhoto.layer.removeAllAnimations()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.buttonTakePhoto.frame = self.CircleFromRect(x: self.buttonX, y: self.buttonY, radius: 50)
+                self.buttonTakePhoto.layer.cornerRadius = 50
+                self.buttonTakePhoto.alpha = 1.0
+            })
+
         }else{
-            takePhoto = true
-            buttonTakePhoto.setTitle("撮影中", for: .normal)
+            //buttonTakePhoto.setTitle("撮影中", for: .normal)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.buttonTakePhoto.layer.cornerRadius = 5
+                self.buttonTakePhoto.frame = self.CircleFromRect(x: self.buttonX, y: self.buttonY, radius: 30)
+            })
+            UIView.animate(withDuration: 0.3,delay: 0.0, options: [.allowUserInteraction,.autoreverse,.repeat], animations: {
+                self.buttonTakePhoto.alpha = 0.5
+                //self.button1.layer.cornerRadius = 5
+            })
+
         }
+        takePhoto = !takePhoto
     }
+
+    //シャッターボタン用　円の中心と半径を入力し、対応したRectを返す
+    private func CircleFromRect(x:Int,y:Int, radius:Int) -> CGRect{
+        return CGRect(x: x - radius, y: y - radius, width: radius * 2, height: radius * 2)
+    }
+
+                           
+                           
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         shutterSpeed = (segmentedControlShutter.selectedSegmentIndex + 1) * 10
@@ -255,7 +298,6 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     override var shouldAutorotate: Bool {
         return false
     }
-    
     
 }
 
