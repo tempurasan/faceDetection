@@ -17,6 +17,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     @IBOutlet weak var buttonChangeCamera: UIButton!
     @IBOutlet weak var buttonShowCameraRoll: UIButton!
     
+    @IBOutlet weak var imageVIewPerson: UIImageView!
     @IBOutlet weak var labelParsonNum: UILabel!
     @IBOutlet weak var segmentedControlShutter: UISegmentedControl!
     @IBOutlet weak var stepperParsonNum: UIStepper!
@@ -32,7 +33,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     private var rectArray:[UIView] = []
     var image : UIImage!
     
-    private var shutterSpeed :Int = 10
+    private var shutterSpeed :Int = 20
     
     private var photoTakeCount:Int = 0
     
@@ -209,7 +210,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         //背景色
         buttonTakePhoto.backgroundColor = UIColor.red
         //枠線を追加
-        buttonTakePhoto.layer.borderColor = UIColor.black.cgColor
+        buttonTakePhoto.layer.borderColor = UIColor.white.cgColor
         //枠線の太さ
         buttonTakePhoto.layer.borderWidth = 5.0
         //文字を消す
@@ -223,7 +224,7 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     func styleCameraRollButton(){
         buttonShowCameraRoll.setTitle("", for: .normal)
         //let picture = UIImage(systemName: "photo.stack.fill")
-        let picture = UIImage(named: "test.png")
+        let picture = UIImage(named: "photo.stack.png")
         buttonShowCameraRoll.setImage(picture, for: .normal)
     }
     
@@ -252,7 +253,6 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                 self.buttonTakePhoto.alpha = 0.5
                 //self.button1.layer.cornerRadius = 5
             })
-
         }
         takePhoto = !takePhoto
     }
@@ -264,25 +264,25 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
 
                            
                            
-    
+    //シャッターを切る速度を設定
     @IBAction func segmentedValueChanged(_ sender: Any) {
         shutterSpeed = (segmentedControlShutter.selectedSegmentIndex + 1) * 10
     }
     //フロントカメラ、背面カメラ変更
     @IBAction func buttonCameraChangePushed(_ sender: Any) {
-        self._captureSession.stopRunning()
-        if self._videoDevice?.position == .back{
-            
-            setupVideo(camPos: .front, orientaiton: .portrait)
-            // 録画開始
-            //self._captureSession.startRunning()
-
-        } else{
-            setupVideo(camPos: .back, orientaiton: .portrait)
-            // 録画開始
-            //self._captureSession.startRunning()
-        }
-        //self._videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: camPos)
+//        self._captureSession.stopRunning()
+//        if self._videoDevice?.position == .back{
+//
+//            setupVideo(camPos: .front, orientaiton: .portrait)
+//            // 録画開始
+//            //self._captureSession.startRunning()
+//
+//        } else{
+//            setupVideo(camPos: .back, orientaiton: .portrait)
+//            // 録画開始
+//            //self._captureSession.startRunning()
+//        }
+//        //self._videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: camPos)
         
     }
     
@@ -299,9 +299,16 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         labelParsonNum.text = String(Int(stepperParsonNum.value))
+        labelParsonNum.textAlignment = NSTextAlignment.center
+        labelParsonNum.textColor = UIColor.black
+        
         styleCaptureButton()
         styleCameraRollButton()
+        
+        segmentedControlShutter.selectedSegmentIndex = 1
+        
         setupVideo(camPos: .back, orientaiton: .portrait)
+        imageVIewPerson.image = UIImage(named: "person.png")
         // Do any additional setup after loading the view.
     }
     

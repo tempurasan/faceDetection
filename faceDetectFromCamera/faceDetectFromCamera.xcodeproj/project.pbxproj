@@ -16,7 +16,8 @@
 		241C12E128D056BF007EF0ED /* faceDetectFromCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241C12E028D056BF007EF0ED /* faceDetectFromCameraTests.swift */; };
 		241C12EB28D056BF007EF0ED /* faceDetectFromCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241C12EA28D056BF007EF0ED /* faceDetectFromCameraUITests.swift */; };
 		241C12ED28D056BF007EF0ED /* faceDetectFromCameraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241C12EC28D056BF007EF0ED /* faceDetectFromCameraUITestsLaunchTests.swift */; };
-		2433ABBF28E49D9000990206 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 2433ABBE28E49D9000990206 /* test.png */; };
+		24291BD128E52D4C00D515C5 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 24291BD028E52D4C00D515C5 /* person.png */; };
+		24E47B0428E52F8D00CDFB1D /* photo.stack.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E47B0328E52F8D00CDFB1D /* photo.stack.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,8 @@
 		241C12E628D056BF007EF0ED /* faceDetectFromCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = faceDetectFromCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		241C12EA28D056BF007EF0ED /* faceDetectFromCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = faceDetectFromCameraUITests.swift; sourceTree = "<group>"; };
 		241C12EC28D056BF007EF0ED /* faceDetectFromCameraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = faceDetectFromCameraUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2433ABBE28E49D9000990206 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		24291BD028E52D4C00D515C5 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		24E47B0328E52F8D00CDFB1D /* photo.stack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photo.stack.png; path = ../../../../../photo.stack.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				241C12C928D056BD007EF0ED /* AppDelegate.swift */,
+				24E47B0328E52F8D00CDFB1D /* photo.stack.png */,
 				241C12CB28D056BD007EF0ED /* SceneDelegate.swift */,
-				2433ABBE28E49D9000990206 /* test.png */,
+				24291BD028E52D4C00D515C5 /* person.png */,
 				241C12CD28D056BD007EF0ED /* ViewController.swift */,
 				241C12CF28D056BD007EF0ED /* Main.storyboard */,
 				241C12D228D056BF007EF0ED /* Assets.xcassets */,
@@ -234,10 +237,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E47B0428E52F8D00CDFB1D /* photo.stack.png in Resources */,
 				241C12D628D056BF007EF0ED /* LaunchScreen.storyboard in Resources */,
 				241C12D328D056BF007EF0ED /* Assets.xcassets in Resources */,
 				241C12D128D056BD007EF0ED /* Main.storyboard in Resources */,
-				2433ABBF28E49D9000990206 /* test.png in Resources */,
+				24291BD128E52D4C00D515C5 /* person.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

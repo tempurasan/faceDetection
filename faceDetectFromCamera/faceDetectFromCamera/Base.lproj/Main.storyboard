@@ -17,54 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Khz-k9-Qmq">
-                                <rect key="frame" x="54" y="37" width="283" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u3b-uv-XL9">
+                                <rect key="frame" x="278" y="718" width="83" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQQ-vW-g9z">
-                                <rect key="frame" x="139" y="735" width="113" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="撮影開始"/>
-                                <connections>
-                                    <action selector="buttonTakePhotoPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="avi-Dk-5r4"/>
-                                </connections>
-                            </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="hrH-b0-njN">
-                                <rect key="frame" x="272" y="683" width="94" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="stepperValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dzJ-kU-oaG"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icD-gp-dyp">
-                                <rect key="frame" x="298" y="742" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-Fl-rTe">
-                                <rect key="frame" x="190" y="37" width="176" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="カメラ切り替え"/>
-                                <connections>
-                                    <action selector="buttonCameraChangePushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yNc-RJ-D9R"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wgj-ZJ-Ny6">
-                                <rect key="frame" x="93" y="74" width="205" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Fast"/>
-                                    <segment title="Nomal"/>
-                                    <segment title="Slow"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZUM-qh-hks"/>
-                                </connections>
-                            </segmentedControl>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lug-wn-gpB">
                                 <rect key="frame" x="0.0" y="735" width="163" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -74,17 +30,51 @@
                                     <action selector="buttonPushedShowCameraRoll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Hc-4g-fhg"/>
                                 </connections>
                             </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="hrH-b0-njN">
+                                <rect key="frame" x="272" y="683" width="94" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dzJ-kU-oaG"/>
+                                </connections>
+                            </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQQ-vW-g9z">
+                                <rect key="frame" x="139" y="735" width="113" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="撮影開始"/>
+                                <connections>
+                                    <action selector="buttonTakePhotoPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="avi-Dk-5r4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icD-gp-dyp">
+                                <rect key="frame" x="298" y="723" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wgj-ZJ-Ny6">
+                                <rect key="frame" x="93" y="47" width="205" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Fast"/>
+                                    <segment title="Normal"/>
+                                    <segment title="Slow"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZUM-qh-hks"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="buttonChangeCamera" destination="UYX-Fl-rTe" id="g7y-vi-S6i"/>
                         <outlet property="buttonShowCameraRoll" destination="lug-wn-gpB" id="caP-PV-5NL"/>
                         <outlet property="buttonTakePhoto" destination="iQQ-vW-g9z" id="QGu-Kt-Spw"/>
+                        <outlet property="imageVIewPerson" destination="u3b-uv-XL9" id="UHG-xl-QbC"/>
                         <outlet property="labelParsonNum" destination="icD-gp-dyp" id="s4C-Dz-9cb"/>
                         <outlet property="segmentedControlShutter" destination="Wgj-ZJ-Ny6" id="uXP-gi-ndc"/>
-                        <outlet property="sliderParsonNum" destination="Khz-k9-Qmq" id="BBB-ke-WZF"/>
                         <outlet property="stepperParsonNum" destination="hrH-b0-njN" id="MyS-da-s8E"/>
                     </connections>
                 </viewController>
