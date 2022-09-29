@@ -205,8 +205,11 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
 //        buttonTakePhoto.clipsToBounds = true
 //        buttonTakePhoto.layer.cornerRadius = min(buttonTakePhoto.frame.width, buttonTakePhoto.frame.height) / 2
         
-        buttonX = Int(buttonTakePhoto.frame.minX + buttonTakePhoto.frame.width / 2)
-        buttonY = Int(buttonTakePhoto.frame.minY + buttonTakePhoto.frame.height / 2)
+        buttonX = Int(self.view.frame.width / 2)
+        buttonY = Int(self.view.frame.height * 0.9)
+        
+//        buttonX = Int(buttonTakePhoto.frame.minX + buttonTakePhoto.frame.width / 2)
+//        buttonY = Int(buttonTakePhoto.frame.minY + buttonTakePhoto.frame.height / 2)
         //背景色
         buttonTakePhoto.backgroundColor = UIColor.red
         //枠線を追加
@@ -215,10 +218,11 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         buttonTakePhoto.layer.borderWidth = 5.0
         //文字を消す
         buttonTakePhoto.setTitle("", for: .normal)
-        //大きさ変更
+        //位置と大きさ変更
         buttonTakePhoto.frame = CircleFromRect(x: buttonX, y: buttonY, radius: 50)
         //角を丸くする
         buttonTakePhoto.layer.cornerRadius = 50//width / 2, height / 2
+        
     }
 
     func styleCameraRollButton(){
