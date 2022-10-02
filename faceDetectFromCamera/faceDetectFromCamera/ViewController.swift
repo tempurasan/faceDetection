@@ -232,11 +232,14 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         buttonShowCameraRoll.setImage(picture, for: .normal)
     }
     
-    
     //ボタンを押して、撮影モードを変更、ボタンのテキストを変更
     @IBAction func buttonTakePhotoPushed(_ sender: Any) {
 //        self._captureSession.stopRunning()
 //        self._captureSession.startRunning()
+        
+        //押したとき、振動
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
         
         //変更するか？　falseのとき押されていることになってる
         if takePhoto == true{
@@ -292,6 +295,11 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     //カメラロール表示
     @IBAction func buttonPushedShowCameraRoll(_ sender: Any) {
+        
+        //撮影中の場合は停止する
+        if takePhoto == true{
+            buttonTakePhotoPushed((Any).self)
+        }
         // フォトライブラリを表示
         present(picker, animated: true, completion: nil)
     }
@@ -302,12 +310,14 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        styleCaptureButton()
+        styleCameraRollButton()
+
         labelParsonNum.text = String(Int(stepperParsonNum.value))
         labelParsonNum.textAlignment = NSTextAlignment.center
         labelParsonNum.textColor = UIColor.black
         
-        styleCaptureButton()
-        styleCameraRollButton()
         
         segmentedControlShutter.selectedSegmentIndex = 1
         
