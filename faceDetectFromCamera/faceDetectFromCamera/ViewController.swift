@@ -227,9 +227,11 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
 
     func styleCameraRollButton(){
         buttonShowCameraRoll.setTitle("", for: .normal)
-        //let picture = UIImage(systemName: "photo.stack.fill")
+        //let picture = UIImage(systemName: "figure.walk")
+        
         let picture = UIImage(named: "photo.stack.png")
         buttonShowCameraRoll.setImage(picture, for: .normal)
+                
     }
     
     //ボタンを押して、撮影モードを変更、ボタンのテキストを変更
@@ -318,12 +320,11 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         labelParsonNum.textAlignment = NSTextAlignment.center
         labelParsonNum.textColor = UIColor.black
         
-        
         segmentedControlShutter.selectedSegmentIndex = 1
         
         setupVideo(camPos: .back, orientaiton: .portrait)
-        imageVIewPerson.image = UIImage(named: "person.png")
-        // Do any additional setup after loading the view.
+        
+        //imageVIewPerson.image = UIImage(named: "person.png")
     }
     
     // 画面を回転させるかどうか

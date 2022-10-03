@@ -18,6 +18,7 @@
 		241C12ED28D056BF007EF0ED /* faceDetectFromCameraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241C12EC28D056BF007EF0ED /* faceDetectFromCameraUITestsLaunchTests.swift */; };
 		2421518628E9D4DA005C3FD8 /* photo.stack.png in Resources */ = {isa = PBXBuildFile; fileRef = 2421518528E9D4DA005C3FD8 /* photo.stack.png */; };
 		24291BD128E52D4C00D515C5 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 24291BD028E52D4C00D515C5 /* person.png */; };
+		24436CE328EAA561000B6E10 /* person.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 24436CE228EAA561000B6E10 /* person.fill.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		241C12EC28D056BF007EF0ED /* faceDetectFromCameraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = faceDetectFromCameraUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2421518528E9D4DA005C3FD8 /* photo.stack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.stack.png; sourceTree = "<group>"; };
 		24291BD028E52D4C00D515C5 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		24436CE228EAA561000B6E10 /* person.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.fill.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				241C12C928D056BD007EF0ED /* AppDelegate.swift */,
 				241C12CB28D056BD007EF0ED /* SceneDelegate.swift */,
+				24436CE228EAA561000B6E10 /* person.fill.png */,
 				24291BD028E52D4C00D515C5 /* person.png */,
 				2421518528E9D4DA005C3FD8 /* photo.stack.png */,
 				241C12CD28D056BD007EF0ED /* ViewController.swift */,
@@ -241,6 +244,7 @@
 				241C12D328D056BF007EF0ED /* Assets.xcassets in Resources */,
 				2421518628E9D4DA005C3FD8 /* photo.stack.png in Resources */,
 				241C12D128D056BD007EF0ED /* Main.storyboard in Resources */,
+				24436CE328EAA561000B6E10 /* person.fill.png in Resources */,
 				24291BD128E52D4C00D515C5 /* person.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
